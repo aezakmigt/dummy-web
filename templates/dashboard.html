@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            overflow: hidden; /* To keep the header contained */
+        }
+        .header {
+            background: linear-gradient(90deg, #0d6efd, #198754);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .content {
+            padding: 2rem;
+            color: #333;
+        }
+        .content p {
+            font-size: 1.2rem;
+        }
+        .content strong {
+            color: #000;
+        }
+        .logout-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #dc3545; /* Danger Red */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .logout-link:hover {
+            background-color: #bb2d3b; /* Darker Red */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome!</h1>
+        </div>
+        <div class="content">
+            {% if session.user_email %}
+                <p>You are successfully logged in as:</p>
+                <p><strong>{{ session.user_email }}</strong></p>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
