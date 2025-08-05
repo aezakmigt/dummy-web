@@ -1,0 +1,42 @@
+<!-- This is the new file: templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Admin Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f0f2f5; margin: 0; padding: 2rem; }
+        .container { max-width: 900px; margin: auto; background: white; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .header { background: #6f42c1; color: white; padding: 2rem; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; }
+        .header a { color: white; background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 1rem; border-bottom: 1px solid #ddd; }
+        th { background-color: #f8f9fa; }
+        tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Registered Users</h1>
+            <a href="{{ url_for('admin_logout') }}">Logout</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

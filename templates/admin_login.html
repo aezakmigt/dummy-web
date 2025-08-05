@@ -1,0 +1,31 @@
+<!-- This is the new file: templates/admin_login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Admin Login</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .form-container { background: #fff; padding: 2.5rem; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); width: 320px; text-align: center; }
+        h2 { color: #1c1e21; margin-bottom: 1.5rem; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        input[type="submit"] { width: 100%; padding: 1rem; background-color: #6f42c1; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
+        input[type="submit"]:hover { background-color: #5a3d9a; }
+        #message { margin-top: 1rem; color: #dc3545; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Administrator Login</h2>
+        <form action="/admin/login" method="post">
+            <input type="text" id="username" name="username" placeholder="Admin Username" required>
+            <input type="password" id="password" name="password" placeholder="Admin Password" required>
+            <input type="submit" value="Log In">
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="message">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
